@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PLAYERS } from '../utils/constants.js'
 import confetti from 'canvas-confetti'
+
 export const useBox = () => {
   const [board, setBoard] = useState(Array(42).fill(null))
   const [playerTurn, setPlayerTurn] = useState(PLAYERS.player_1)
@@ -11,29 +12,25 @@ export const useBox = () => {
 
     const newBoard = [...board]
 
-    const handleCheckBox = (newBoard, index) => {
-      if (newBoard[index + 7] !== null && newBoard[index] === null) {
-        newBoard[index] = playerTurn
+    if (newBoard[index + 7] !== null && newBoard[index] === null) {
+      newBoard[index] = playerTurn
+      setBoard(newBoard)
+
+      newBoard[index] === PLAYERS.player_1
+        ? setPlayerTurn(PLAYERS.player_2)
+        : setPlayerTurn(PLAYERS.player_1)
+
+      handleSetWinner(newBoard, index)
+    } else if (newBoard[index + 7] === null) {
+      newBoard[index] = playerTurn
+      setBoard(newBoard)
+
+      setTimeout(() => {
+        newBoard[index] = null
         setBoard(newBoard)
-
-        newBoard[index] === PLAYERS.player_1
-          ? setPlayerTurn(PLAYERS.player_2)
-          : setPlayerTurn(PLAYERS.player_1)
-
-        handleSetWinner(newBoard, index)
-      } else if (newBoard[index + 7] === null) {
-        newBoard[index] = playerTurn
-        setBoard(newBoard)
-
-        setTimeout(() => {
-          newBoard[index] = null
-          setBoard(newBoard)
-          handleCheckBox(newBoard, index + 7)
-        }, 50)
-      }
+        handleChangeBox(index + 7)
+      }, 100)
     }
-
-    handleCheckBox(newBoard, index)
   }
 
   const handleSetWinner = (newBoard, index) => {
