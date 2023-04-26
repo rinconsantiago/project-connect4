@@ -12,16 +12,24 @@ function App () {
   const [playerWinner, setPlayerWinner] = useState(null)
 
   const handleChangeBox = index => {
-    if (board[index] !== null || playerWinner !== null) return
+    if (playerWinner !== null) return
 
     const newBoard = [...board]
-    newBoard[index] = playerTurn
-    setBoard(newBoard)
 
-    if (newBoard[index] === PLAYERS.player_1) setPlayerTurn(PLAYERS.player_2)
-    else setPlayerTurn(PLAYERS.player_1)
+    const handleCheckBox = (newBoard, index) => {
+      if (newBoard[index + 7] !== null && newBoard[index] === null) {
+        newBoard[index] = playerTurn
+        setBoard(newBoard)
 
-    handleSetWinner(newBoard, index)
+        newBoard[index] === PLAYERS.player_1
+          ? setPlayerTurn(PLAYERS.player_2)
+          : setPlayerTurn(PLAYERS.player_1)
+
+        handleSetWinner(newBoard, index)
+      } else if (newBoard[index + 7] === null) handleChangeBox(index + 7)
+    }
+
+    handleCheckBox(newBoard, index)
   }
 
   const handleSetWinner = (newBoard, index) => {
