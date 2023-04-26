@@ -11,8 +11,6 @@ function App () {
   const [playerTurn, setPlayerTurn] = useState(PLAYERS.player_1)
   const [playerWinner, setPlayerWinner] = useState(null)
 
-  console.log(playerTurn)
-
   const handleChangeBox = index => {
     if (board[index] !== null || playerWinner !== null) return
 
