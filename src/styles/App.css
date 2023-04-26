@@ -18,16 +18,18 @@ body {
 .box {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  place-items: center;
   gap: 1rem;
   width: fit-content;
   max-width: 50%;
 }
 
 .box-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   border: 2px solid #fff;
-  width: 1.5rem;
-  padding: 1rem;
+  height: 3rem;
+  width: 3rem;
   border-radius: 50%;
 }
