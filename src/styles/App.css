@@ -1,0 +1,33 @@
+body {
+  font-family: system-ui;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+}
+
+.title {
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+  gap: 1rem;
+  width: fit-content;
+  max-width: 50%;
+}
+
+.box-item {
+  cursor: pointer;
+  border: 2px solid #fff;
+  width: 1.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+}
