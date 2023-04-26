@@ -26,7 +26,17 @@ function App () {
           : setPlayerTurn(PLAYERS.player_1)
 
         handleSetWinner(newBoard, index)
-      } else if (newBoard[index + 7] === null) handleChangeBox(index + 7)
+      } else if (newBoard[index + 7] === null) {
+        newBoard[index] = playerTurn
+        setBoard(newBoard)
+
+        setTimeout(() => {
+          newBoard[index] = null
+          setBoard(newBoard)
+          handleCheckBox(newBoard, index + 7)
+          console.log('finish')
+        }, 50)
+      }
     }
 
     handleCheckBox(newBoard, index)
