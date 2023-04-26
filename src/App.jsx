@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import './styles/App.css'
+import { useState } from 'react'
+import confetti from 'canvas-confetti'
 
 const PLAYERS = {
   player_1: 'red',
@@ -34,7 +35,6 @@ function App () {
           newBoard[index] = null
           setBoard(newBoard)
           handleCheckBox(newBoard, index + 7)
-          console.log('finish')
         }, 50)
       }
     }
@@ -63,9 +63,16 @@ function App () {
         newBoard[a] === newBoard[c] &&
         newBoard[a] === newBoard[d]
       ) {
+        confetti()
         setPlayerWinner(newBoard[index])
       }
     }
+  }
+
+  const handleReset = () => {
+    setBoard(Array(42).fill(null))
+    setPlayerTurn(PLAYERS.player_1)
+    setPlayerWinner(null)
   }
 
   return (
@@ -85,7 +92,15 @@ function App () {
       </main>
       {playerWinner && (
         <aside>
-          <h3>The Winner Is: {playerWinner}</h3>
+          <h3>
+            The Winner Is:{' '}
+            <span className='winnerText' style={{ color: playerWinner }}>
+              {playerWinner}
+            </span>
+          </h3>
+          <button className='reset' onClick={handleReset}>
+            RESET GAME
+          </button>
         </aside>
       )}
     </>

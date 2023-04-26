@@ -1,3 +1,8 @@
+#root {
+  height: fit-content;
+  display: grid;
+}
+
 body {
   font-family: system-ui;
   background-color: #222;
@@ -6,6 +11,7 @@ body {
 }
 
 .title {
+  align-self: center;
   text-decoration: underline;
   font-style: italic;
 }
@@ -32,4 +38,25 @@ body {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
+}
+
+.winnerText {
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.reset {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem;
+  background-color: #000;
+  color: #fff;
+  transition: all 0.5s;
+}
+
+.reset:hover {
+  box-shadow: -2.5px 2.5px rgba(128, 128, 128, 0.25);
+  transform: translateY(-1px);
 }
