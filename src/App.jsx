@@ -1,7 +1,7 @@
 import './styles/App.css'
 import { useBox } from './hooks/useBox'
 import { Box } from './components/Box'
-import { WinnerReset } from './components/WinnerReset'
+import { WinnerReset } from './components/Winner'
 
 function App () {
   const { board, playerWinner, handleChangeBox, handleReset } = useBox()
