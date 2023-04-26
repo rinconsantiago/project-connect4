@@ -9,6 +9,7 @@ export const useBox = () => {
 
   const handleChangeBox = index => {
     if (playerWinner !== null) return
+    if (board.every(box => box !== null)) setPlayerWinner(false)
 
     const newBoard = [...board]
 
@@ -29,7 +30,7 @@ export const useBox = () => {
         newBoard[index] = null
         setBoard(newBoard)
         handleChangeBox(index + 7)
-      }, 100)
+      }, 50)
     }
   }
 

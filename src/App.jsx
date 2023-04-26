@@ -6,6 +6,8 @@ import { WinnerReset } from './components/Winner'
 function App () {
   const { board, playerWinner, handleChangeBox, handleReset } = useBox()
 
+  const off = playerWinner !== null ? '' : '-off'
+
   return (
     <>
       <h1 className='title'>Connnect 4</h1>
@@ -17,6 +19,10 @@ function App () {
         {playerWinner !== null && (
           <WinnerReset playerWinner={playerWinner} handleReset={handleReset} />
         )}
+
+        <button className={`reset${off}`} onClick={handleReset}>
+          RESET GAME
+        </button>
       </aside>
     </>
   )

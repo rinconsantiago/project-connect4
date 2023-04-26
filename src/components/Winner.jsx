@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export function WinnerReset ({ playerWinner, handleReset }) {
+export function WinnerReset ({ playerWinner }) {
   return (
     <>
       <h3>
@@ -9,14 +9,10 @@ export function WinnerReset ({ playerWinner, handleReset }) {
           {playerWinner}
         </span>
       </h3>
-      <button className='reset' onClick={handleReset}>
-        RESET GAME
-      </button>
     </>
   )
 }
 
 WinnerReset.propTypes = {
-  playerWinner: PropTypes.string.isRequired,
-  handleReset: PropTypes.func.isRequired
+  playerWinner: PropTypes.string.isRequired
 }
